@@ -1,5 +1,9 @@
-* { 
+* {
     box-sizing: border-box;
+}
+
+:root {
+    --container-padding: 10px
 }
 
 body {
@@ -9,4 +13,34 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    display: wrap;
+    margin: 0 auto;
+    width: 80vw;
+    background-color: rgb(160, 160, 160);
+    padding: 10px var(--container-padding);
+}
+
+th {
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+
+tr {
+    padding: 20px var(--container-padding);
+    background-color: aliceblue;
+}
+
+td {
+    padding: 10px 15px;
+}
+
+.book-list tr:nth-child(odd) {
+    background-color: rgb(210, 210, 210);
 }

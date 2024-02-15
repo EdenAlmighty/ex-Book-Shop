@@ -6,8 +6,26 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Book Shop</title>
 </head>
-<body>
+<body onload="onInit()">
     <h1>Book Shop</h1>
+    <table class="book-list">
+        <thead>
+            
+                <th>Title</th>
+                <th>Price</th>
+                <th>Actions</th>
+
+        </thead>
+        <tbody class="books-list">
+            <!-- <tr>
+                <td>TITLE</td>
+                <td>PRICE</td>
+                <td><button>Read</button> <button>Update</button> <button onclick="onRemoveBook()">Delete</button></td>
+            </tr> -->
+
+           
+        </tbody>
+    </table>
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/shop.service.js"></script>

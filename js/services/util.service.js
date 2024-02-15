@@ -9,3 +9,4 @@ function makeId(length = 5) {
     }
     return id
 }
+// console.log(makeId());
