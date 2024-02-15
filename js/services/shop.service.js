@@ -13,18 +13,22 @@ function removeBook(bookId) {
     console.log(gBooks);
 }
 
+function readBook(bookId) {
+    const book = gBooks.find(book => book.id === bookId)
+    
+    return book
+}
+
 function addBook() {
     const newBook = _createBook(prompt('Enter Book Title?'), +prompt('Enter Book Price'))
     gBooks.unshift(newBook)
     _saveBooks()
-
 }
 
 function updatePrice(bookId) {
     var bookIdx = gBooks.findIndex(book => book.id === bookId)
     gBooks[bookIdx].price = +prompt('Update book price:')
     _saveBooks()
-
 }
 
 function getBooks() {
