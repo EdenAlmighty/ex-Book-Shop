@@ -14,7 +14,7 @@ function renderBooks() {
             <td>${book.price}</td>
             <td>
             <button onclick="onRead(event, '${book.id}')">Read</button> 
-            <button onclick="onUpdatePrice(event, '${book.price}')">Update</button> 
+            <button onclick="onUpdatePrice(event, '${book.id}')">Update</button> 
             <button onclick="onRemoveBook(event, '${book.id}')">Delete</button></td>
             </tr>
     `)
@@ -22,9 +22,10 @@ function renderBooks() {
     elBooksList.innerHTML = strHTMLs.join('')
 }
 
-function onUpdatePrice(ev, bookPrice) {
+function onUpdatePrice(ev, bookId) {
     ev.stopPropagation()
-    updatePrice(bookPrice)
+    updatePrice(bookId)
+    renderBooks()
 }
 
 function onRemoveBook(ev, bookId) {

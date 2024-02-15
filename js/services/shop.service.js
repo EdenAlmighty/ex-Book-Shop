@@ -13,6 +13,15 @@ function removeBook(bookId) {
     console.log(gBooks);
 }
 
+function addBook() {
+    
+}
+
+function updatePrice(bookId) {
+    var bookIdx = gBooks.findIndex(book => book.id === bookId)
+    gBooks[bookIdx].price = +prompt('Update book price:')
+}
+
 function getBooks() {
     return gBooks
 }
@@ -20,7 +29,7 @@ function getBooks() {
 function _createBooks() {
     gBooks = loadFromStorage(BOOK_DB, gBooks)
 
-    if(!gBooks) {
+    if (!gBooks) {
         gBooks = [
             _createBook('The adventures of Lori Ipsi', 120),
             _createBook('Harry Potter', 180),
