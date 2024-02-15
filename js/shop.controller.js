@@ -15,7 +15,8 @@ function renderBooks() {
             <td>
             <button onclick="onReadBook(event, '${book.id}')">Read</button> 
             <button onclick="onUpdatePrice(event, '${book.id}')">Update</button> 
-            <button onclick="onRemoveBook(event, '${book.id}')">Delete</button></td>
+            <button onclick="onRemoveBook(event, '${book.id}')">Delete</button>
+            </td>
             </tr>
     `)
     const elBooksList = document.querySelector('.books-list')

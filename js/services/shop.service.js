@@ -10,12 +10,11 @@ _createBooks()
 function removeBook(bookId) {
     const bookIdx = gBooks.findIndex(book => book.id === bookId)
     gBooks.splice(bookIdx, 1)
-    console.log(gBooks);
+    _saveBooks()
 }
 
 function readBook(bookId) {
     const book = gBooks.find(book => book.id === bookId)
-    
     return book
 }
 
@@ -57,7 +56,6 @@ function _createBook(title, price) {
         imgUrl: 'lori-ipsi.jpg'
     }
 }
-console.log(getBooks());
 
 function _saveBooks() {
     saveToStorage(BOOK_DB, gBooks)
