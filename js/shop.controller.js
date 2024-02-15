@@ -22,6 +22,11 @@ function renderBooks() {
     elBooksList.innerHTML = strHTMLs.join('')
 }
 
+function onAddTodo(ev){
+    addBook()
+    renderBooks()
+}
+
 function onUpdatePrice(ev, bookId) {
     ev.stopPropagation()
     updatePrice(bookId)
