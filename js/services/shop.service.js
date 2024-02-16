@@ -3,7 +3,24 @@
 
 const BOOK_DB = 'bookDB'
 var gBooks
+var gFilterBy = ''
 _createBooks()
+
+
+
+function setFilterBy(filterBy) {
+        gFilterBy = filterBy
+        // gFilterby = filterBy.filter(book => book.title.toLowerCase().includes(filterBy.toLowerCase()))
+
+    // return filteredBooks.map(book => {
+    //     book.isFiltered = true
+    //     console.log(filteredBooks);
+    //     return book.title
+    // })
+    
+
+}
+
 
 
 
@@ -31,29 +48,32 @@ function updatePrice(bookId) {
 }
 
 function getBooks() {
-    return gBooks
+    
+    if(!gFilterBy) return gBooks
+    return gBooks.filter(book => book.title.toLowerCase().includes(gFilterBy.toLowerCase()))
 }
 
 function _createBooks() {
-    gBooks = loadFromStorage(BOOK_DB, gBooks)
+    // gBooks = loadFromStorage(BOOK_DB, gBooks)
 
     if (!gBooks) {
         gBooks = [
             _createBook('The adventures of Lori Ipsi', 120),
-            _createBook('Harry Potter', 180),
-            _createBook('Dude Where\'s my car?', 50),
+            _createBook('Harry Potter', 180, 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1663805647i/136251.jpg'),
+            _createBook('Who moved my cheese?', 50, 'https://m.media-amazon.com/images/I/71vfjx-h4wL._AC_UF894,1000_QL80_.jpg'),
         ]
         _saveBooks()
     }
 
 }
 
-function _createBook(title, price) {
+function _createBook(title, price, imgUrl = 'https://www.montmorencylibrary.com/books.jpg/@@images/image.jpeg') {
     return {
         id: makeId(),
         title,
         price,
-        imgUrl: 'lori-ipsi.jpg'
+        imgUrl,
+        isFiltered: false
     }
 }
 

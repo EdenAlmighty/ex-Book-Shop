@@ -10,9 +10,12 @@
 
 <body onload="onInit()">
     <h1>Book Shop</h1>
-
+        <form class="filter">
+            <input type="text" placeholder="Search" oninput="onSetFilterBy(this)">
+            <button class="clear-filter" onclick="clearFilter(event)">Clear</button>
+        </form>
+    <button onclick="onAddTodo(event)">Add Book</button>
     <table class="book-list">
-        <button onclick="onAddTodo(event)">Add Book</button>
         <thead>
             <th>Title</th>
             <th>Price</th>
@@ -20,13 +23,13 @@
         </thead>
         <tbody class="books-list">
         </tbody>
-
     </table>
 
     <dialog class="book-details">
         <form method="dialog">
             <h2>Book Details: <span></span></h2>
             <pre></pre>
+            <img src="">
             <button>X</button>
         </form>
     </dialog>

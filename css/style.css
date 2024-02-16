@@ -44,3 +44,7 @@ td {
 .book-list tr:nth-child(odd) {
     background-color: rgb(210, 210, 210);
 }
+
+img {
+    height: 20vh;
+}
