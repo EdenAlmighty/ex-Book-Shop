@@ -6,23 +6,9 @@ var gBooks
 var gFilterBy = ''
 _createBooks()
 
-
-
 function setFilterBy(filterBy) {
         gFilterBy = filterBy
-        // gFilterby = filterBy.filter(book => book.title.toLowerCase().includes(filterBy.toLowerCase()))
-
-    // return filteredBooks.map(book => {
-    //     book.isFiltered = true
-    //     console.log(filteredBooks);
-    //     return book.title
-    // })
-    
-
 }
-
-
-
 
 function removeBook(bookId) {
     const bookIdx = gBooks.findIndex(book => book.id === bookId)
@@ -54,8 +40,6 @@ function getBooks() {
 }
 
 function _createBooks() {
-    // gBooks = loadFromStorage(BOOK_DB, gBooks)
-
     if (!gBooks) {
         gBooks = [
             _createBook('The adventures of Lori Ipsi', 120),
@@ -64,10 +48,9 @@ function _createBooks() {
         ]
         _saveBooks()
     }
-
 }
 
-function _createBook(title, price, imgUrl = 'https://www.montmorencylibrary.com/books.jpg/@@images/image.jpeg') {
+function _createBook(title, price, imgUrl = 'img/defualt.jpg') {
     return {
         id: makeId(),
         title,

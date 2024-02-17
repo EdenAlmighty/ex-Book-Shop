@@ -41,10 +41,34 @@ td {
     padding: 10px 15px;
 }
 
-.book-list tr:nth-child(odd) {
-    background-color: rgb(210, 210, 210);
+.book-list tr:nth-child() {
+    background-color: rgb(194, 134, 134);
 }
 
 img {
     height: 20vh;
+}
+
+.modal {
+    display: flex;
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+     top: 1vh;
+    height: 4vh;
+    width: 10vh;
+    background-color: rgba(50, 175, 77, 0.619);
+    opacity: 0%;
+    border-radius: 8%;
+    transition: ease-in-out 0.2s;
+
+}
+
+.modal span {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }

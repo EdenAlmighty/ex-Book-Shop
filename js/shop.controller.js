@@ -7,7 +7,7 @@ function onInit() {
 
 function renderBooks() {
     const books = getBooks() // filter function
-    const strHTMLs = books.map( book => `
+    const strHTMLs = books.map(book => `
         <tr>    
         <tr>
             <td>${book.title}</td>
@@ -27,8 +27,8 @@ function clearFilter() {
     document.querySelector('.input.oninput') = ''
 }
 
-function onToggleBook(bookId){
-    onToggleBook(bookId) 
+function onToggleBook(bookId) {
+    onToggleBook(bookId)
     renderBooks()
 }
 
@@ -39,9 +39,9 @@ function onSetFilterBy(elInput) {
     renderBooks()
 }
 
-function onReadBook(ev, bookId){
+function onReadBook(ev, bookId) {
     ev.stopPropagation()
-    const book = readBook(bookId)
+    const book = readBook(bookId, str)
 
     const elBookDetails = document.querySelector('.book-details')
     const elSpan = elBookDetails.querySelector('h2 span')
@@ -58,19 +58,36 @@ function onReadBook(ev, bookId){
     elBookDetails.showModal()
 }
 
-function onAddTodo(ev){ 
+function onAddBook(ev) {
     addBook()
     renderBooks()
+    showModal('Book Added')
 }
 
 function onUpdatePrice(ev, bookId) {
     ev.stopPropagation()
     updatePrice(bookId)
+    showModal('Price Updated')
     renderBooks()
 }
 
 function onRemoveBook(ev, bookId) {
     ev.stopPropagation()
+    showModal('Deleted' , 'rgba(175, 50, 50, 0.619)')
     removeBook(bookId)
     renderBooks()
 }
+
+function showModal(txt, color) {
+    var elModal = document.querySelector('.modal')
+    const elSpan = elModal.querySelector('span')
+    elSpan.innerText = txt
+
+    elModal.style.backgroundColor = color
+    elModal.style.opacity = 50
+
+    setTimeout(() => {
+        elModal.style.opacity = 0
+    }, 2000);
+}
+

@@ -14,7 +14,7 @@
             <input type="text" placeholder="Search" oninput="onSetFilterBy(this)">
             <button class="clear-filter" onclick="clearFilter(event)">Clear</button>
         </form>
-    <button onclick="onAddTodo(event)">Add Book</button>
+        <button onclick="onAddBook(event)">Add Book</button>
     <table class="book-list">
         <thead>
             <th>Title</th>
@@ -24,7 +24,7 @@
         <tbody class="books-list">
         </tbody>
     </table>
-
+    <div class="modal"><span>Succes</span></div>
     <dialog class="book-details">
         <form method="dialog">
             <h2>Book Details: <span></span></h2>
