@@ -1,5 +1,5 @@
 'use strict'
-//MODEL
+//DOM
 
 function onInit() {
     renderBooks()
@@ -7,6 +7,7 @@ function onInit() {
 
 function renderBooks() {
     const books = getBooks() // filter function
+    renderStats()
     const strHTMLs = books.map(book => `
         <tr>    
         <tr>
@@ -21,6 +22,16 @@ function renderBooks() {
     `)
     const elBooksList = document.querySelector('.books-list')
     elBooksList.innerHTML = strHTMLs.join('')
+}
+function renderStats() {
+    const elExpensive = document.querySelector('.expensive')
+    const elAvg = document.querySelector('.avg')
+    const elCheap = document.querySelector('.cheap')
+
+    elExpensive.innerText = getExpensive()
+    elAvg.innerText = getAvg()
+    elCheap.innerText = getCheap()
+    
 }
 
 function clearFilter() {
@@ -41,13 +52,12 @@ function onSetFilterBy(elInput) {
 
 function onReadBook(ev, bookId) {
     ev.stopPropagation()
-    const book = readBook(bookId, str)
+    const book = readBook(bookId)
 
     const elBookDetails = document.querySelector('.book-details')
     const elSpan = elBookDetails.querySelector('h2 span')
     const elPre = elBookDetails.querySelector('pre')
     const elImg = elBookDetails.querySelector('img')
-    // const elImg = elBookDetails.querySelector(`img[src='${book.imgUrl}']`)
 
     elPre.innerText = `
     Book ID: ${book.id}
@@ -58,22 +68,26 @@ function onReadBook(ev, bookId) {
     elBookDetails.showModal()
 }
 
-function onAddBook(ev) {
-    addBook()
-    renderBooks()
-    showModal('Book Added')
+function onAddBook(isBook) {
+    var validBook = addBook(isBook)
+    console.log(validBook);
+    if (!validBook) alert('Enter a valid title and price')
+
+        renderBooks()
+        showModal('Book Added', 'rgba(50, 175, 77, 0.619)')
+    
 }
 
 function onUpdatePrice(ev, bookId) {
     ev.stopPropagation()
     updatePrice(bookId)
-    showModal('Price Updated')
+    showModal('Price Updated', 'rgba(50, 175, 77, 0.619)')
     renderBooks()
 }
 
 function onRemoveBook(ev, bookId) {
     ev.stopPropagation()
-    showModal('Deleted' , 'rgba(175, 50, 50, 0.619)')
+    showModal('Deleted', 'rgba(175, 50, 50, 0.619)')
     removeBook(bookId)
     renderBooks()
 }

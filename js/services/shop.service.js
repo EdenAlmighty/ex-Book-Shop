@@ -1,5 +1,5 @@
 'use strict'
-//DOM
+//MODAL
 
 const BOOK_DB = 'bookDB'
 var gBooks
@@ -7,7 +7,7 @@ var gFilterBy = ''
 _createBooks()
 
 function setFilterBy(filterBy) {
-        gFilterBy = filterBy
+    gFilterBy = filterBy
 }
 
 function removeBook(bookId) {
@@ -21,10 +21,13 @@ function readBook(bookId) {
     return book
 }
 
-function addBook() {
+function addBook(isBook) {
     const newBook = _createBook(prompt('Enter Book Title?'), +prompt('Enter Book Price'))
+    if (!newBook.title || newBook.price <= 0) return isBook = false
+
     gBooks.unshift(newBook)
     _saveBooks()
+    return isBook = true
 }
 
 function updatePrice(bookId) {
@@ -34,9 +37,27 @@ function updatePrice(bookId) {
 }
 
 function getBooks() {
-    
-    if(!gFilterBy) return gBooks
+    if (!gFilterBy) return gBooks
     return gBooks.filter(book => book.title.toLowerCase().includes(gFilterBy.toLowerCase()))
+}
+
+function getExpensive() {
+    var ExpCounter = 0
+    gBooks.forEach(book => book.price > 100 ? ExpCounter++ : ExpCounter)
+    return ExpCounter
+}
+
+function getCheap() {
+    var cheapCounter = 0
+    gBooks.forEach(book => (book.price <= 80) ? cheapCounter++ : cheapCounter)
+    return cheapCounter
+}
+
+function getAvg() {
+    const sum = gBooks.reduce((acc, book) => acc + book.price, 0)
+    const avg = sum / gBooks.length
+    console.log(avg);
+    return Math.floor(avg)
 }
 
 function _createBooks() {
